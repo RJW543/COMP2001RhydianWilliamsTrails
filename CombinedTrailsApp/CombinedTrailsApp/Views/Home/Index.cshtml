@@ -1,0 +1,17 @@
+﻿<!-- Views/Home/Index.cshtml -->
+@model CombinedTrailsApp.Models.User
+
+@using (Html.BeginForm("ProcessLogin", "Home", FormMethod.Post))
+{
+    <div>
+        <label for="email">Email:</label>
+        <input type="text" name="email" />
+    </div>
+    <div>
+        <label for="password">Password:</label>
+        <input type="password" name="password" />
+    </div>
+    <div>
+        <input type="submit" value="Submit" />
+    </div>
+}
