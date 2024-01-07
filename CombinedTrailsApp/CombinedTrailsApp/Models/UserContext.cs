@@ -14,24 +14,48 @@ public class UserContext : DbContext
     // Method to configure the schema and properties for the "Profile" table
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        base.OnModelCreating(modelBuilder);
+base.OnModelCreating(modelBuilder);
 
-        // Configuring the "Profile" table with a specified schema ("CW2")
-        modelBuilder.Entity<UserVal>()
-            .ToTable("Profile", "CW2")
-            .HasKey(u => u.Email); // Specify the primary key
+    modelBuilder.Entity<UserVal>()
+        .ToTable("Profile", "CW2")
+        .HasKey(u => u.Email);
 
-        modelBuilder.Entity<UserVal>()
-            .Property(u => u.Photo)
-            .HasColumnName("Photo");
+    modelBuilder.Entity<UserVal>()
+        .Property(u => u.Photo)
+        .HasColumnName("Photo");
 
-        // Configuring additional columns
-        modelBuilder.Entity<UserVal>()
-            .Property(u => u.FirstName)
-            .HasColumnName("FirstName");
+    // ... other properties ...
 
-        modelBuilder.Entity<UserVal>()
-            .Property(u => u.LastName)
-            .HasColumnName("LastName");
+    modelBuilder.Entity<UserVal>()
+        .Property(u => u.AboutMe)
+        .HasColumnName("AboutMe");
+
+    modelBuilder.Entity<UserVal>()
+        .Property(u => u.LocationID)
+        .HasColumnName("LocationID");
+
+    modelBuilder.Entity<UserVal>()
+        .Property(u => u.Units)
+        .HasColumnName("Units");
+
+    modelBuilder.Entity<UserVal>()
+        .Property(u => u.ActivityTimePref)
+        .HasColumnName("ActivityTimePref");
+
+    modelBuilder.Entity<UserVal>()
+        .Property(u => u.Height)
+        .HasColumnName("Height");
+
+    modelBuilder.Entity<UserVal>()
+        .Property(u => u.Weight)
+        .HasColumnName("Weight");
+
+    modelBuilder.Entity<UserVal>()
+        .Property(u => u.Dob)
+        .HasColumnName("Dob");
+
+    modelBuilder.Entity<UserVal>()
+        .Property(u => u.LanguageID)
+        .HasColumnName("LanguageID");
     }
 }

@@ -26,15 +26,12 @@ namespace CombinedTrailsApp.Controllers
             _userContext = userContext;
         }
 
-        // Other actions...
-
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
 
-        // Updated ProcessLogin action method
         [HttpPost]
         public async Task<ActionResult> ProcessLogin(string email, string password)
         {
@@ -70,7 +67,6 @@ namespace CombinedTrailsApp.Controllers
                     // Read the response content as a string
                     string responseData = await response.Content.ReadAsStringAsync();
 
-                    // Write the response to the console
                     Console.WriteLine($"API Response: {responseData}");
                     string editval1 = responseData.Replace('"', ' ');
                     string editval2 = editval1.Replace('[', ' ');
@@ -114,8 +110,7 @@ namespace CombinedTrailsApp.Controllers
             }
             else
             {
-                // User not found, handle accordingly (e.g., show an error message)
-                return View("UserNotFound"); // You can create a UserNotFound view for displaying a message
+                return View("UserNotFound"); 
             }
         }
     }
