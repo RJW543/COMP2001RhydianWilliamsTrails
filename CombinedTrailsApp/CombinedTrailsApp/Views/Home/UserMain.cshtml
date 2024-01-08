@@ -7,15 +7,23 @@
         <p>Photo: @user.Photo</p>
         <p>First Name: @user.FirstName</p>
         <p>Last Name: @user.LastName</p>
-
-        <!-- Display other properties -->
         <p>About Me: @user.AboutMe</p>
         <p>Location ID: @user.LocationID</p>
+        @* <p>Location ID: @user.Location</p> *@
         <p>Units: @user.Units</p>
         <p>Activity Time Preference: @user.ActivityTimePref</p>
         <p>Height: @user.Height</p>
         <p>Weight: @user.Weight</p>
         <p>Date of Birth: @user.Dob.ToShortDateString()</p>
         <p>Language ID: @user.LanguageID</p>
+        @* <p>Language: @user.Language</p> *@
+        @if (user.LanguageID == 1)
+        {
+            <p>Language: English</p>
+        }
+        else
+        {
+            <p>Language: Other</p>
+        }
     </div>
 }

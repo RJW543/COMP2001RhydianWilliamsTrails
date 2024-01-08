@@ -11,7 +11,6 @@ namespace CombinedTrailsApp.Controllers
 {
     public class HomeController : Controller
     {
-        // Action method for the initial page
         public ActionResult Index()
         {
             return View();
@@ -39,7 +38,6 @@ namespace CombinedTrailsApp.Controllers
             string storedEmail = email;
             string storedPassword = password;
 
-            // Create a new HttpClient instance
             using (var httpClient = new HttpClient())
             {
                 // Define the API endpoint URL
@@ -61,7 +59,6 @@ namespace CombinedTrailsApp.Controllers
                 // Use HttpClient to post the JSON data to the API endpoint
                 HttpResponseMessage response = await httpClient.PostAsync(apiUrl, content);
 
-                // Check if the request was successful (status code 2xx)
                 if (response.IsSuccessStatusCode)
                 {
                     // Read the response content as a string
@@ -83,7 +80,6 @@ namespace CombinedTrailsApp.Controllers
                 }
                 else
                 {
-                    // Handle error cases here, if needed
                     System.Diagnostics.Debug.WriteLine($"Error: {response.StatusCode} - {response.ReasonPhrase}");
                 }
             }
@@ -100,7 +96,7 @@ namespace CombinedTrailsApp.Controllers
             }
 
             // Retrieve the user with the specified email from the database
-            var user = _userContext.Profile.SingleOrDefault(u => u.Email == storedEmail);
+            var user = _userContext.MyCombinedView.SingleOrDefault(u => u.Email == storedEmail);
 
             // Check if the user is found
             if (user != null)

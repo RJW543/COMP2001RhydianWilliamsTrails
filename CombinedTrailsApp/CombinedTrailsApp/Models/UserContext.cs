@@ -3,28 +3,28 @@ using Microsoft.EntityFrameworkCore;
 
 public class UserContext : DbContext
 {
-    // DbSet representing the "Profile" table
-    public DbSet<UserVal> Profile { get; set; }
+    public DbSet<UserVal> MyCombinedView { get; set; }
 
     // Constructor accepting DbContextOptions
     public UserContext(DbContextOptions<UserContext> options) : base(options)
     {
     }
 
-    // Method to configure the schema and properties for the "Profile" table
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-base.OnModelCreating(modelBuilder);
+        base.OnModelCreating(modelBuilder);
 
-    modelBuilder.Entity<UserVal>()
+        modelBuilder.Entity<UserVal>()
+            .ToTable("MyCombinedView", "CW2")
+            .HasKey(u => u.Email);
+
+        modelBuilder.Entity<UserVal>()
         .ToTable("Profile", "CW2")
         .HasKey(u => u.Email);
 
     modelBuilder.Entity<UserVal>()
         .Property(u => u.Photo)
         .HasColumnName("Photo");
-
-    // ... other properties ...
 
     modelBuilder.Entity<UserVal>()
         .Property(u => u.AboutMe)
@@ -34,7 +34,11 @@ base.OnModelCreating(modelBuilder);
         .Property(u => u.LocationID)
         .HasColumnName("LocationID");
 
-    modelBuilder.Entity<UserVal>()
+    //modelBuilder.Entity<UserVal>()
+    //    .Property(u => u.Location)
+    //    .HasColumnName("Location");
+
+        modelBuilder.Entity<UserVal>()
         .Property(u => u.Units)
         .HasColumnName("Units");
 
@@ -57,5 +61,9 @@ base.OnModelCreating(modelBuilder);
     modelBuilder.Entity<UserVal>()
         .Property(u => u.LanguageID)
         .HasColumnName("LanguageID");
+
+    //modelBuilder.Entity<UserVal>()
+    //        .Property(u => u.Language)
+    //        .HasColumnName("Language");
     }
 }
